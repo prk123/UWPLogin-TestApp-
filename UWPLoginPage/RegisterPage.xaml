@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="UWPLoginPage.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPLoginPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls ="using:WinUX.Xaml.Controls"
+    xmlns:rules ="using:WinUX.Data.Validation.Rules"
+    xmlns:validation ="using:WinUX.Data.Validation"
+        
+    
+    mc:Ignorable="d">
+    
+    <Grid Background="#1f3b50">
+        <!-- Validation Rules -->
+        <Grid.Resources>
+            <validation:ValidationRules x:Key="EmailCheck">
+                <validation:ValidationRules.Rules>
+                    <rules:EmailValidationRule/>
+                </validation:ValidationRules.Rules>
+            </validation:ValidationRules>
+        </Grid.Resources>
+        <Grid VerticalAlignment="Top"
+              Margin=" 0 16 8 8"
+              Padding="16"
+              Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <controls:ValidatingTextBox x:Name="txtUserName"
+                                        PlaceholderText="UserName"
+                                        Margin="8"
+                                        Grid.Row="0"/>
+            <PasswordBox x:Name="txtPassword"
+                           PlaceholderText="Password"
+                           Margin="8"
+                           Grid.Row="1"/>
+            <controls:ValidatingTextBox x:Name="txtEmail"
+                                        PlaceholderText="Email"
+                                        Margin="8"
+                                        Grid.Row="2"
+                                        ValidationRules="{StaticResource EmailCheck}"/>
+            <Button x:Name="btnRegister"
+                    Content="Register"
+                    Foreground="White"
+                    HorizontalAlignment="Stretch"
+                    Margin="8 8 8 24"
+                    Background="#00cc69"
+                    Grid.Row="3" Click="btnRegister_Click"/> 
+
+        </Grid>
+    </Grid>
+</Page>
